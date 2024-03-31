@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=d, initial-scale=1.0">
+    <title>Assignment 28</title>
+    <style>
+        body{
+            background-color: #f7f6f6;
+        }
+        .product-card{
+            background-color: white;
+            width: 230px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin: 30px auto;
+            padding-top: 10px;
+        }
+        .cat-img{
+            height: 100px;
+            display: block;
+            margin: 5px auto;
+            background-image: linear-gradient( 135deg, #FFDB01 10%, #0E197D 100%);
+            border-radius: 20px;
+            padding: 10px 20px;}
+
+        .card-body{
+            margin-left: 7px;
+            padding-bottom: 10px;
+        }
+        .title{
+            font-size: 18px;
+            text-align: center;
+        }
+        .product-description{
+            font-size: 14px;
+            padding-left: 10px;
+        }
+        .product-price{
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .quantity-btn-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn-quantity{
+            height: 25px;
+        }
+        .quantity-text{
+            font-size: 25px;
+            margin: auto 10px;
+            cursor: pointer;
+        }
+        .btn-buyNow{
+            display: block;
+            background-image: linear-gradient( 135deg, #FFDB01 10%, #0E197D 100%);
+            border: none;
+            border-radius: 20px;
+            padding: 5px 20px;
+            cursor: pointer;
+            margin: 10px auto;
+          
+        }
+    </style>
+</head>
+<body>
+    <div class="product-card">
+        <img src="./a91699567bc85fe0c97582f7bc7f6fc4-removebg-preview.png" class="cat-img"/>
+        <div class="card-body">
+            <h1 class="title">dairy milk chocolate</h1>
+            <p class="product-description">
+                delicious and yummy dairy milk chocolate with extra milk.
+            </p>
+
+            <p class="product-price">₹ 50/-</p>
+
+            <p id="show-quantity">1 x 50</p>
+            <p id="show-total">Total : 50</p>
+
+
+            <div class="quantity-btn-container">
+                <img src="./minus.png" class="btn-quantity" onclick="dec()"/>
+
+                <span class="quantity-text" id="quatity-text">1</span>
+
+                <img src="./add.png" class="btn-quantity" onclick="inc()"/>
+            </div>
+
+            <button type="button" class="btn-buyNow">Buy Now</button>
+        </div>
+    </div>
+
+    <script>
+        const quatityText = document.getElementById('quatity-text');
+        const showQuantity = document.getElementById('show-quantity');
+        const showTotal = document.getElementById('show-total');
+        
+        function inc(){
+            let quatity = parseInt(quatityText.innerText);
+
+            if(quatity<10){
+                quatityText.innerText = ++quatity;
+            }
+            else{
+                alert("You can't add more than 10 items");
+            }
+            
+            setTotalAmount(quatity);
+        }
+
+        function dec(){
+          let quatity = parseInt(quatityText.innerText);
+
+            if(quatity > 1){
+                quatityText.innerText = --quatity;
+            }
+            else{
+                alert("You can't add less than 1 item");
+            }
+
+            setTotalAmount(quatity);
+        }
+        function setTotalAmount(quatity){
+            showQuantity.innerText = `${quatity} x 50`;
+            showTotal.innerText = `Total: ${quatity * 50}`;
+        }
+    </script>
+</body>
+</html>
